@@ -1,0 +1,44 @@
+
+group 'com.yangio.plugins'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    dependencies {
+        implementation 'com.umeng.umsdk:common:2.0.0'
+        implementation 'com.umeng.umsdk:utdid:1.1.5.3'
+        implementation 'com.umeng.umsdk:push:5.0.2'
+
+        implementation 'androidx.annotation:annotation:1.0.2'
+        implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    }
+}
